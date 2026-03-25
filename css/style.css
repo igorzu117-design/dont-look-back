@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Roboto:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    user-select: none;
+}
+
+#gameContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+canvas {
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Creepster', cursive;
+    font-size: 5rem;
+    color: #e50000;
+    text-shadow: 0 0 20px #e50000, 2px 2px 0 #000;
+    margin-bottom: 10px;
+    letter-spacing: 5px;
+}
+
+p.subtitle {
+    font-size: 1.2rem;
+    color: #aaa;
+    max-width: 600px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 2px solid #555;
+    padding: 15px 40px;
+    margin: 10px;
+    font-size: 1.5rem;
+    font-family: 'Creepster', cursive;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn:hover {
+    border-color: #e50000;
+    color: #e50000;
+    box-shadow: 0 0 15px rgba(229, 0, 0, 0.5) inset;
+}
+
+#menuUI,
+#gameOverUI,
+#winUI,
+#pauseUI,
+#cutsceneUI,
+#settingsUI {
+    display: none;
+}
+
+#menuUI.active,
+#gameOverUI.active,
+#winUI.active,
+#pauseUI.active,
+#cutsceneUI.active,
+#settingsUI.active {
+    display: flex;
+}
+
+/* Settings Styles */
+#settingsUI input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    margin-right: 15px;
+    cursor: pointer;
+    accent-color: #e50000;
+}
+
+.shake {
+    animation: shake 0.5s infinite;
+    display: inline-block;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(5px, 5px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-5px, -5px) rotate(-1deg);
+    }
+
+    75% {
+        transform: translate(5px, -5px) rotate(1deg);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.blood-text {
+    color: #e50000;
+    font-family: 'Creepster', cursive;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px #e50000;
+}
+
+/* Mobile controls */
+#mobileControls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(2, 70px);
+    gap: 10px;
+    z-index: 5;
+}
+
+@media (max-width: 768px) {
+    #mobileControls {
+        display: grid;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .btn {
+        padding: 10px 30px;
+        font-size: 1.2rem;
+    }
+}
+
+.ctrl-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    color: white;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.ctrl-btn:active {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: #fff;
+}
+
+#btnUp {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#btnLeft {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#btnDown {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#btnRight {
+    grid-column: 3;
+    grid-row: 2;
+}

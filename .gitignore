@@ -1,0 +1,8 @@
+.gemini/
+.history/
+.vscode/
+node_modules/
+dist/
+build/
+*.log
+*.tmp

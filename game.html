@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Don't Look Back 3D</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Подключение Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+    <div id="gameContainer">
+        <div id="extremeTimerUI"
+            style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-family: 'Creepster', cursive; font-size: 3rem; color: #fff; text-shadow: 0 0 10px #f00; display: none; z-index: 10;">
+            ВЫЖИВАЙ: 120
+        </div>
+        <!-- Mobile Controls -->
+        <div id="mobileControls">
+            <div class="ctrl-btn" id="btnUp">▲</div>
+            <div class="ctrl-btn" id="btnLeft">◄</div>
+            <div class="ctrl-btn" id="btnDown">▼</div>
+            <div class="ctrl-btn" id="btnRight">►</div>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="menuUI" class="overlay active">
+            <h1>Don't Look Back</h1>
+            <p class="subtitle">3D ВЕРСИЯ<br><br>Вы заперты в лабиринте. Найдите выход (светящаяся зелёная зона).<br>На
+                уровне "Средний" и "Сложный" вы не одни.<br>Управление: W/S (вперёд/назад), A/D (поворот камеры).</p>
+            <button class="btn" onclick="startGame('easy')">Лёгкий</button>
+            <button class="btn" onclick="startGame('medium')">Средний</button>
+            <button class="btn" onclick="startGame('hard')">Сложный</button>
+            <button class="btn" id="btnExtreme" onclick="startGame('extreme')"
+                style="background: #a00; border-color: #f00; color: #fff; text-shadow: 0 0 10px #f00; margin-top: 10px;">ЭКСТРИМ</button>
+            <button class="btn" onclick="showSettings()"
+                style="margin-top: 20px; border-color: #888; font-size: 1.2rem;">Настройки</button>
+        </div>
+
+        <!-- Settings Screen -->
+        <div id="settingsUI" class="overlay">
+            <h1>НАСТРОЙКИ</h1>
+            <div style="margin: 20px; text-align: left; font-family: 'Creepster', cursive; font-size: 1.8rem;">
+                <label style="display: block; margin-bottom: 15px; cursor: pointer;">
+                    <input type="checkbox" id="soundToggle" checked onchange="updateSettings()"> ЗВУК
+                </label>
+                <label style="display: block; margin-bottom: 15px; cursor: pointer;">
+                    <input type="checkbox" id="thirdPersonToggle" onchange="updateSettings()"> ОТ ТРЕТЬЕГО ЛИЦА
+                </label>
+            </div>
+            <button class="btn" onclick="showMenu()">Назад</button>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameOverUI" class="overlay">
+            <div class="blood-text">ОНО ДОГНАЛО ВАС...</div>
+            <button class="btn" onclick="showMenu()">В главное меню</button>
+        </div>
+
+        <!-- Win Screen -->
+        <div id="winUI" class="overlay">
+            <h2
+                style="font-family: 'Creepster', cursive; font-size: 4rem; color: #00ff00; margin-bottom: 20px; text-shadow: 0 0 20px #00ff00;">
+                ВЫ СБЕЖАЛИ!</h2>
+            <p class="subtitle">Но надолго ли? Из темноты всё ещё кто-то смотрит...</p>
+            <button class="btn" onclick="showMenu()">В главное меню</button>
+        </div>
+
+        <!-- Pause Screen -->
+        <div id="pauseUI" class="overlay">
+            <h1>ПАУЗА</h1>
+            <button class="btn" onclick="resumeGame()">Продолжить</button>
+            <button class="btn" onclick="showMenu()">В главное меню</button>
+        </div>
+
+        <!-- Cutscene Screen -->
+        <div id="cutsceneUI" class="overlay" style="background: rgba(0,0,0,1); z-index: 100;">
+            <div id="cutsceneText" class="blood-text" style="font-size: 3rem; text-align: center; max-width: 80%;">
+            </div>
+        </div>
+    </div>
+    <script src="js/audio.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
